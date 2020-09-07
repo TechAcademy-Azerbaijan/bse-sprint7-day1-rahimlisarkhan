@@ -11,7 +11,7 @@ We require you to solve the following tasks. Remember to read the requirements f
 
 # Assignments' list 
 
-## Assignment 1
+## Assignment 1   :star:  :star:  :star:  :star:
 
 ### Description
 
