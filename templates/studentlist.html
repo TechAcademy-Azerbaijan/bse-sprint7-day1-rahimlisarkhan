@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style">
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Student List</h1>
+
+    <ul>
+        {% for student in student_list  %}
+            {% if student.Status == 'Activate' %}
+                <li><a href="/students/{{student.Id[1]}}">First Name:{{student.Name|title}}</a></li>
+                <li><a href="/students/{{student.Id[1]}}">Last Name:{{student.Surname}}</a></li>
+                {% if student.Bio == '' %}
+                    <li><a href="/students/{{student.Id[1]}}">Bio: I'm a student at Tech academy</a></li>
+                
+                    {% else %}
+                        <li><a href="/students/{{student.Id[1]}}">Bio:{{student.Bio}}</a></li>
+                {%endif%}
+                <li><a href="/students/{{student.Id[1]}}"><img src= {{student.Image}} ></a></li>
+            {%endif%}
+        {%endfor%}
+ 
+    </ul>
+  </body>
+</html>
