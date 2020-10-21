@@ -1,14 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<!-- extends html area-->
+{% extends 'base.html'  %}    
     
-<h1> Student List </h1>
+      <!--block content area-->
+    {% block content %}
+    
+    <ul>
+        <!--from for loop jinja-->
+        {% for student in student_list  %}
 
+            <!--first if else statement-->
+            {% if student.Status == 'Activate' %}
+                <li><a href="/students/{{student.Id[1]}}">First Name:{{student.Name|title}}</a></li>
+                <li><a href="/students/{{student.Id[1]}}">Last Name:{{student.Surname}}</a></li>
+                
+                 <!--second if else statement-->
+                {% if student.Bio == '' %}
+                      <li><a href="/students/{{student.Id[1]}}">Bio: I'm a student at Tech academy</a></li>
+                {% else %}
+                      <li><a href="/students/{{student.Id[1]}}">Bio:{{student.Bio}}</a></li>
+                {%endif%}
+                <li><a href="/students/{{student.Id[1]}}">Image: <img width='200' src= {{student.Image}} ></a></li>
+            {%endif%}
+        {%endfor%}
+    </ul>
 
-</body>
-</html>
+    {% endblock %}

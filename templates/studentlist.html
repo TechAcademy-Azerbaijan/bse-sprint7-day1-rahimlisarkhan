@@ -1,29 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style">
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Student List</h1>
+<!-- extends html area
+{% extends 'base.html' %}
 
-    <ul>
-        {% for student in student_list  %}
-            {% if student.Status == 'Activate' %}
-                <li><a href="/students/{{student.Id[1]}}">First Name:{{student.Name|title}}</a></li>
-                <li><a href="/students/{{student.Id[1]}}">Last Name:{{student.Surname}}</a></li>
-                {% if student.Bio == '' %}
-                    <li><a href="/students/{{student.Id[1]}}">Bio: I'm a student at Tech academy</a></li>
-                
-                    {% else %}
-                        <li><a href="/students/{{student.Id[1]}}">Bio:{{student.Bio}}</a></li>
-                {%endif%}
-                <li><a href="/students/{{student.Id[1]}}"><img src= {{student.Image}} ></a></li>
-            {%endif%}
+  <!--block content area-->
+  {% block content %}
+
+      <!--html code area-->
+      <div class='InfoStudent'>
+        {% for student in studentAPI  %}
+        {% if student == 'Name'%}
+         <h1>Welcome:{{studentAPI[student] | title}}</h1>  
+         {% endif %}
         {%endfor%}
- 
-    </ul>
-  </body>
-</html>
+      </div>  
+    
+      <ul>
+            <!--from for loop jinja-->
+            {% for student in studentAPI  %}
+               
+                <!--first if else statement-->
+                {% if student == 'Bio' and studentAPI[student] == '' %}
+                <li>Bio: I'm a student at Tech academy.</li>
+                
+                {% else %}
+                      <!--second if else statement-->
+                      {% if student == 'Image' %}
+                          <li>Image: <img src="{{studentAPI[student]}}"></li>
+                      {% else %}
+                          <li>{{student | title}}: {{studentAPI[student] | title}}</li>
+                      {% endif %}
+
+                {% endif %}
+
+            {%endfor%}
+        </ul>
+
+    {% endblock %} -->
+
